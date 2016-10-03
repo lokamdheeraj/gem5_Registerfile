@@ -1,0 +1,419 @@
+pipeline.cc:            DPRINTF(Quiesce, "Suspending as the processor is idle\n");
+pipeline.cc:        DPRINTF(Drain, "Still draining\n");
+pipeline.cc:            DPRINTF(Drain, "Signalling end of draining\n");
+pipeline.cc:    DPRINTF(MinorCPU, "Draining pipeline by halting inst fetches. "
+pipeline.cc:    DPRINTF(Drain, "Drain resume\n");
+pipeline.cc:    DPRINTF(MinorCPU, "Pipeline undrained stages state:%s%s%s%s%s%s%s%s\n",
+scoreboard.cc:DPRINTF(ScoreboardInst, "FunctionaName:=%s, Inst:%s:%s\n",funcName, inst->id.execSeqNum,inst->staticInst->disassemble(0));
+scoreboard.cc:DPRINTF(ScoreboardFaultInjectionTrack, "FunctionaName:=%s, Inst:=%s\n, Fault is injected on the -Writing instruction- field of scoreboard, it was %d now it is %d",funcName, inst->staticInst->disassemble(0), writingInst[index], faultyWritingInst);
+scoreboard.cc:DPRINTF(ScoreboardFaultInjectionTrack, "FunctionaName:=%s, Inst:=%s\n, Fault is injected on the -FU indicate- field of scoreboard, it was %d now it is %d",funcName, inst->staticInst->disassemble(0), fuIndices[index], faultyfuIndices);
+scoreboard.cc:DPRINTF(ScoreboardFaultInjectionTrack, "FunctionaName:=%s, Inst:=%s\n, Fault is injected on the -return cycle- field of scoreboard, it was %d now it is %d",funcName, inst->staticInst->disassemble(0), returnCycle[index], faultyReturnCycle);
+scoreboard.cc:DPRINTF(ScoreboardFaultInjectionTrack, "FunctionaName:=%s, Inst:=%s\n, Fault is injected on the -Num results- field of scoreboard, it was %d now it is %d",funcName, inst->staticInst->disassemble(0), numResults[index], faultynumResults);
+scoreboard.cc:            DPRINTF(MinorScoreboard, "Marking up inst: %s(%s)"
+scoreboard.cc:    DPRINTF(MinorScoreboard, "Inst: %s(%s) depends on execSeqNum: %d\n",
+scoreboard.cc:            DPRINTF(MinorScoreboard, "Clearing inst: %s(%s)"
+scoreboard.cc:            DPRINTF(MinorTiming, "Warning, inst: %s timing extra decode has"
+cpu.cc:    DPRINTF(Drain, "MinorCPU wakeup\n");
+cpu.cc:    DPRINTF(Drain,"Suspended Processor awoke\n");
+cpu.cc:    DPRINTF(MinorCPU, "MinorCPU startup\n");
+cpu.cc:    DPRINTF(Drain, "MinorCPU drain\n");
+cpu.cc:        DPRINTF(Drain, "MinorCPU drained\n");
+cpu.cc:        DPRINTF(Drain, "MinorCPU not finished draining\n");
+cpu.cc:    DPRINTF(Drain, "MinorCPU drain done\n");
+cpu.cc:        DPRINTF(Drain, "drainResume while switched out.  Ignoring\n");
+cpu.cc:    DPRINTF(Drain, "MinorCPU drainResume\n");
+cpu.cc:    DPRINTF(Drain, "MinorCPU memWriteback\n");
+cpu.cc:    DPRINTF(MinorCPU, "MinorCPU switchOut\n");
+cpu.cc:    DPRINTF(MinorCPU, "MinorCPU takeOverFrom\n");
+cpu.cc:    DPRINTF(MinorCPU, "ActivateContext thread: %d", thread_id);
+cpu.cc:    DPRINTF(MinorCPU, "SuspendContext %d\n", thread_id);
+cpu.cc:    DPRINTF(Quiesce, "Event wakeup from stage %d\n", stage_id);
+decode.cc:                    DPRINTF(Decode, "Fault being passed: %d\n",
+decode.cc:                    DPRINTF(Decode, "Microop decomposition inputIndex:"
+decode.cc:                    DPRINTF(Decode, "Passing on inst: %s inputIndex:"
+decode.cc:                    DPRINTF(Decode, "Wrapping\n");
+exec_context.hh:			DPRINTF(MinorExecute, "ExecContext setting PC: %s\n", inst->pc);
+exec_context.hh:						DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is reading faulty register %s\n which the faulty value is %s\n", funcName, inst->staticInst->disassemble(0), si->srcRegIdx(idx), thread.readIntReg(si->srcRegIdx(idx) ));
+exec_context.hh:						DPRINTF(RegPointerFI, "%s, ponits to I: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), static_cast<unsigned int>(si->srcRegIdx(idx)), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:						DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), thread.readIntReg(si->srcRegIdx(idx)), faultyval);
+exec_context.hh:						DPRINTF(BranchsREGfaultInjectionTrack, "%s: true Branch register val was: %s\nBecause of fault now the value is %s\n", inst->staticInst->disassemble(0), thread.readIntReg(si->srcRegIdx(idx)), faultyval);
+exec_context.hh:						DPRINTF(CMPsREGfaultInjectionTrack, "%s: true CMP register val was: %s\nBecause of fault now the value is %s\n", inst->staticInst->disassemble(0), thread.readIntReg(si->srcRegIdx(idx)), faultyval);
+exec_context.hh:								DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is reading faulty register %s\n which the faulty value is %s\n", funcName, inst->staticInst->disassemble(0), reg_idx, thread.readFloatReg(reg_idx));
+exec_context.hh:									DPRINTF(RegPointerFI, "%s: Idx(%s), ponits to F: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), reg_idx, static_cast<unsigned int>(reg_idx), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:						DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), thread.readFloatReg(reg_idx), faultyval);
+exec_context.hh:									DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is reading faulty register %s\n which the faulty value is %s\n", funcName, inst->staticInst->disassemble(0), reg_idx, thread.readFloatRegBits(reg_idx));
+exec_context.hh:									DPRINTF(RegPointerFI, "%s: Idx(%s), ponits to F: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), reg_idx, static_cast<unsigned int>(reg_idx), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:						DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), thread.readFloatRegBits(reg_idx), faultyval);
+exec_context.hh:									DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is overwritten the faulty register %s\n, which the faulty value was %s, with %s!\n", funcName, inst->staticInst->disassemble(0), si->destRegIdx(idx), thread.readIntReg(si->destRegIdx(idx)), val);
+exec_context.hh:									DPRINTF(RegPointerFI, "%s: Idx(%s), ponits to I: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), idx, static_cast<unsigned int>(si->destRegIdx(idx)), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:									DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), val, faultyval);
+exec_context.hh:									DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is overwritten the faulty register %s\n which the faulty value was %s, with %s!\n", funcName, inst->staticInst->disassemble(0), reg_idx, thread.readFloatReg(reg_idx), val);
+exec_context.hh:									DPRINTF(RegPointerFI, "%s: Idx(%s), ponits to F: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), idx, static_cast<unsigned int>(reg_idx), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:									DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), val, faultyval);
+exec_context.hh:									DPRINTF(faultInjectionTrack, "In Function: %s instruction  %s is overwritten the faulty register %s\n which the faulty value was %s, with %s!\n", funcName, inst->staticInst->disassemble(0), reg_idx, thread.readFloatRegBits(reg_idx), val);
+exec_context.hh:									DPRINTF(RegPointerFI, "%s: Idx(%s), ponits to F: %s\nBecause of faults in pipeline registers now it ponits to %s\n", inst->staticInst->disassemble(0), idx, static_cast<unsigned int>(reg_idx), static_cast<unsigned int>(faultyIDX));
+exec_context.hh:									DPRINTF(FUsREGfaultInjectionTrack, "%s: true FUs val was: %s\nBecause of faults in FUs registers now the value is %s\n", inst->staticInst->disassemble(0), val, faultyval);
+exec_context.hh:						DPRINTF(BranchsREGfaultInjectionTrack, "%s: true CC Branch register val was: %s\nBecause of fault now the value is %s\n", inst->staticInst->disassemble(0), thread.readCCReg(reg_idx), faultyval);
+fetch1.cc:        DPRINTF(Fetch, "lineSnap set to cache line size of: %d\n",
+fetch1.cc:        DPRINTF(Fetch, "maxLineWidth set to cache line size of: %d\n",
+fetch1.cc:    DPRINTF(Fetch, "Inserting fetch into the fetch queue "
+fetch1.cc:    DPRINTF(Fetch, "Submitting ITLB request\n");
+fetch1.cc:        DPRINTF(Fetch, "Fault in address ITLB translation: %s, "
+fetch1.cc:        DPRINTF(Fetch, "Got ITLB response\n");
+fetch1.cc:        DPRINTF(Fetch, "Fetch not at front of requests queue, can't"
+fetch1.cc:        DPRINTF(Fetch, "Fetch still in translation, not issuing to"
+fetch1.cc:        DPRINTF(Fetch, "Not advancing line fetch\n");
+fetch1.cc:        DPRINTF(Fetch, "Issued fetch request to memory: %s\n",
+fetch1.cc:        DPRINTF(Fetch, "Line fetch needs to retry: %s\n",
+fetch1.cc:        DPRINTF(Fetch, "Step in state %s moving to state %s\n",
+fetch1.cc:    DPRINTF(Fetch, "recvTimingResp %d\n", numFetchesInMemorySystem);
+fetch1.cc:        DPRINTF(Fetch, "Received error response packet: %s\n",
+fetch1.cc:    DPRINTF(Fetch, "recvRetry\n");
+fetch1.cc:        DPRINTF(Fetch, "Suspending fetch: %s\n", branch);
+fetch1.cc:        DPRINTF(Fetch, "Halting fetch\n");
+fetch1.cc:        DPRINTF(Fetch, "Changing stream on branch: %s\n", branch);
+fetch1.cc:    DPRINTF(Fetch, "Updating streamSeqNum from: %d to %d,"
+fetch1.cc:        DPRINTF(Fetch, "Stopping line fetch because of fault: %s\n",
+fetch1.cc:                DPRINTF(Fetch, "Waking up fetch: %s\n", execute_branch);
+fetch1.cc:                DPRINTF(Fetch, "Halted, ignoring branch: %s\n",
+fetch1.cc:            DPRINTF(Fetch, "Ignoring simultaneous prediction: %s\n",
+fetch1.cc:            DPRINTF(Fetch, "Not changing stream on prediction: %s,"
+fetch1.cc:            DPRINTF(Fetch, "Discarding translated fetch at it's for"
+fetch1.cc:            DPRINTF(Fetch, "Processing fetched line: %s\n",
+fetch1.cc:    DPRINTF(Drain, "isDrained %s %s%s%s\n",
+execute.cc:			DPRINTF(Branch, "tryToBranch before: %s after: %s%s\n",
+execute.cc:					DPRINTF(MainPCs, "Func: %s Inst: %s PC:%s:----LastInt:%s\n", funcName, inst->staticInst->disassemble(0), inst->pc.instAddr(),lastInst->staticInst->disassemble(0));
+execute.cc:					DPRINTF(PCFaultInjectionTrack, "FUNC:%s	Inst:%s: True Pc of Inst was PC:%s\n",funcName, inst->staticInst->disassemble(0), target.instAddr());
+execute.cc:					DPRINTF(PCFaultInjectionTrack, "FUNC:%s Inst:%s: Faulty Pc of Inst is PC:%s\n",funcName, inst->staticInst->disassemble(0), target.instAddr() );
+execute.cc:					DPRINTF(PCFaultInjectionTrack, "Funct: %s Following Inst:%s: PC:%s\n",funcName, inst->staticInst->disassemble(0),inst->pc.instAddr());
+execute.cc:					DPRINTF(BranchsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for Branch fault injection is %s\n",funcName, inst->staticInst->disassemble(0));
+execute.cc:					DPRINTF(CMPsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for CMP fault injection is %s\n",funcName, inst->staticInst->disassemble(0));
+execute.cc:				DPRINTF(Branch, "Advancing current PC from: %s to: %s\n",
+execute.cc:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x but"
+execute.cc:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x correctly"
+execute.cc:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x"
+execute.cc:				DPRINTF(Branch, "Unpredicted branch from 0x%x to 0x%x inst: %s\n",
+execute.cc:				DPRINTF(Branch, "Branch data signalled: %s\n", branch);
+execute.cc:				DPRINTF(MinorMem, "Completing fault from DTLB access: %s\n",
+execute.cc:					DPRINTF(MinorMem, "Not taking fault on prefetch: %s\n",
+execute.cc:				DPRINTF(MinorMem, "Completing failed request inst: %s\n",
+execute.cc:				DPRINTF(MinorMem, "Trying to commit error response: %s\n",
+execute.cc:				DPRINTF(MinorMem, "Memory response inst: %s addr: 0x%x size: %d\n",
+execute.cc:					DPRINTF(MinorMem, "Memory data[0]: 0x%x\n",
+execute.cc:					DPRINTF(MinorMem, "Fault in memory completeAcc: %s\n",
+execute.cc:			DPRINTF(MinorInterrupt, "Considering interrupt status from PC: %s\n",
+execute.cc:				DPRINTF(MinorInterrupt, "Invoking interrupt: %s to PC: %s\n",
+execute.cc:				DPRINTF(MinorExecute, "Initiating memRef inst: %s\n", *inst);
+execute.cc:					DPRINTF(MinorExecute, "Fault on memory inst: %s"
+execute.cc:					DPRINTF(MinorExecute, "Not issuing inst: %s from suspended"
+execute.cc:					DPRINTF(MinorExecute, "Discarding inst: %s as its stream"
+execute.cc:					DPRINTF(MinorExecute, "Not issuing new non-microop inst: %s\n",
+execute.cc:						DPRINTF(MinorExecute, "Trying to issue inst: %s to FU: %d\n",
+execute.cc:								DPRINTF(MinorExecute, "Can't issue as FU: %d isn't"
+execute.cc:								DPRINTF(MinorExecute, "Can't issue as FU: %d is"
+execute.cc:							DPRINTF(MinorExecute, "Can't issue inst: %s into FU: %d,"
+execute.cc:							DPRINTF(MinorExecute, "Can't issue inst: %s to busy FU"
+execute.cc:								DPRINTF(MinorExecute, "Can't issue inst: %s as extra"
+execute.cc:								DPRINTF(MinorExecute, "Can't issue inst: %s yet\n",
+execute.cc:								DPRINTF(MinorExecute, "Issuing inst: %s"
+execute.cc:											DPRINTF(MinorExecute, "A barrier will"
+execute.cc:											DPRINTF(MinorExecute, "Memory ref inst:"
+execute.cc:									DPRINTF(MinorExecute, "Pushing mem inst: %s\n",
+execute.cc:						DPRINTF(MinorExecute, "Didn't issue inst: %s\n", *inst);
+execute.cc:						DPRINTF(MinorMem, "Issuing memory barrier inst: %s\n", *inst);
+execute.cc:							DPRINTF(MinorExecute, "Reached inst issue limit\n");
+execute.cc:					DPRINTF(MinorExecute, "Stepping to next inst inputIndex: %d\n",
+execute.cc:						DPRINTF(MinorExecute, "Wrapping\n");
+execute.cc:				DPRINTF(PCEvent, "Acting on PC Event to PC: %s\n",
+execute.cc:DPRINTF(faultInjectionTrack, "%s \n",inst->staticInst->disassemble(0));
+execute.cc:					DPRINTF(UnnecInst, "%s\n", inst->staticInst->disassemble(0));
+execute.cc:				DPRINTF(MinorExecute, "Not committing inst from suspended thread"
+execute.cc:				DPRINTF(MinorExecute, "Fault inst reached Execute: %s\n",
+execute.cc:						DPRINTF(MinorExecute, "Fault in early executing inst: %s\n",
+execute.cc:						DPRINTF(MinorExecute, "Fault in execute: %s\n",
+execute.cc:				DPRINTF(MinorExecute, "Can't commit data barrier inst: %s yet as"
+execute.cc:				DPRINTF(MinorExecute, "Committing inst: %s\n", *inst);
+execute.cc:					DPRINTF(MinorExecute, "Fault in execute of inst: %s fault: %s\n",
+execute.cc:					DPRINTF(MinorInterrupt, "Suspending thread: %d from Execute"
+execute.cc:				DPRINTF(MinorInterrupt, "Only commit microops %s %d\n",
+execute.cc:					DPRINTF(MinorInterrupt, "Committing tail of insts before"
+execute.cc:					DPRINTF(RegPointerFI, "FUNC= %s\nTarget instruction for pipeline registers fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc:					DPRINTF(FUsREGfaultInjectionTrack, "From execute.cc---FUNC= %s\nTarget instruction for FUs fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc:					DPRINTF(BranchsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for Branch fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc:				DPRINTF(MinorExecute, "Trying to commit canCommitInsts: %d\n",
+execute.cc:					DPRINTF(MinorExecute, "Trying to commit mem response: %s\n",
+execute.cc:						DPRINTF(MinorExecute, "Discarding mem inst: %s as its"
+execute.cc:						DPRINTF(MinorExecute, "Trying to commit from mem FUs\n");
+execute.cc:							DPRINTF(MinorExecute, "Issuing mem ref early"
+execute.cc:						DPRINTF(MinorExecute, "Committing no cost inst: %s", *inst);
+execute.cc:						DPRINTF(MinorExecute, "Trying to commit from FUs\n");
+execute.cc:								DPRINTF(MinorExecute, "Evaluating expression for"
+execute.cc:								DPRINTF(MinorExecute, "Extra commit delay expr"
+execute.cc:									DPRINTF(MinorExecute, "Extra commit delay was"
+execute.cc:								DPRINTF(MinorExecute, "Not committing inst: %s yet"
+execute.cc:								DPRINTF(MinorExecute, "Not committing inst: %s yet"
+execute.cc:					DPRINTF(MinorExecute, "No instructions to commit\n");
+execute.cc:					DPRINTF(MinorExecute, "Discarding inst: %s as its stream"
+execute.cc:					DPRINTF(MinorExecute, "Completed inst: %s\n", *inst);
+execute.cc:						DPRINTF(MinorMem, "Completing memory barrier"
+execute.cc:						DPRINTF(MinorExecute, "Reached inst commit limit\n");
+execute.cc:						DPRINTF(MinorExecute, "Reached mem ref commit limit\n");
+execute.cc:				DPRINTF(MinorInterrupt, "No interrupt controller\n");
+execute.cc:				DPRINTF(MinorInterrupt, "Execute skipping a cycle to allow old"
+execute.cc:						DPRINTF(MinorInterrupt, "Waiting but no insts\n");
+execute.cc:						DPRINTF(MinorInterrupt, "Waiting for end of inst before"
+execute.cc:			DPRINTF(Activity, "Need to tick num issued insts: %s%s%s%s%s%s\n",
+execute.cc:				DPRINTF(Activity, "The next cycle might be skippable as there are no"
+execute.cc:				DPRINTF(faultInjectionTrack, "Some this is wrong! Execution takes too long");
+execute.cc:					DPRINTF(printCF, "%d -> %s \n",counter, funcName);
+execute.cc:				DPRINTF(TickMain, "FunctionaName:=%s\n",sym_str );
+execute.cc:					DPRINTF(faultInjectionTrack, "random selected reg(relative): %s\n.", FItargetReg);
+execute.cc:					//DPRINTF(faultInjectionTrack, "random selected reg(after flatten): %s\n.", reg);
+execute.cc:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the integer register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readIntReg(FItargetReg));
+execute.cc:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the float register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readFloatRegBits(FItargetReg));
+execute.cc:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the CC register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readIntReg(FItargetReg));
+execute.cc:				DPRINTF(MinorInterrupt, "Waking up Fetch (via Execute) by issuing"
+execute.cc:				DPRINTF(MinorInterrupt, "Already branching, no need for wakeup\n");
+execute.cc:			DPRINTF(Drain, "MinorExecute drainResume\n");
+execute.cc:			DPRINTF(Drain, "setDrainState: %s\n", state);
+execute.cc:			DPRINTF(Drain, "MinorExecute drain\n");
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "		 	: %s\n", os.str());
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "		 	: %s\n", os.str());
+dyn_inst.cc:					DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:					DPRINTF(RegFileAccess,  "		 	: %s\n", os.str() );
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "		 	: %s\n", os.str());
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(RegFileAccess,  "		 	: %s\n", os.str());
+dyn_inst.cc:					DPRINTF(RegFileAccess,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:					DPRINTF(RegFileAccess,  "		 	: %s\n", os.str());
+dyn_inst.cc:						//DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						//DPRINTF(FUsREG,  "		 	: %s\n", os.str());
+dyn_inst.cc:						//DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						//DPRINTF(FUsREG,  "		 	: %s\n", os.str());
+dyn_inst.cc:					DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:					DPRINTF(FUsREG,  "		 	: %s\n", os.str() );
+dyn_inst.cc:						DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(FUsREG,  "		 	: %s\n", os.str());
+dyn_inst.cc:						DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:						DPRINTF(FUsREG,  "		 	: %s\n", os.str());
+dyn_inst.cc:					//DPRINTF(FUsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum);
+dyn_inst.cc:					//DPRINTF(FUsREG,  "		 	: %s\n", os.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "       %s: %s:%s:lastInst_BranchREG= %s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum, regs_str3.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "		 	: %s:lastInst_BranchREG=%s\n", os.str(), os.str() );
+dyn_inst.cc:						DPRINTF(BranchsREG,  "       %s: %s:%s:lastInst_BranchREG=%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum,regs_str3.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "		 	: %s:lastInst_BranchREG=%s\n", os.str(),regs_str3.str());
+dyn_inst.cc:					DPRINTF(BranchsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum, regs_str3.str());
+dyn_inst.cc:					DPRINTF(BranchsREG,  "		 	: %s\n", os.str() ,regs_str3.str() );
+dyn_inst.cc:						DPRINTF(BranchsREG,  "       %s: %s:%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum, regs_str3.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "		 	: %s\n", os.str(),regs_str3.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "       %s: %s:%s:lastInst_BranchREG=%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum, regs_str3.str());
+dyn_inst.cc:						DPRINTF(BranchsREG,  "		 	: %s:lastInst_BranchREG=%s\n", os.str(), regs_str3.str());
+dyn_inst.cc:					DPRINTF(BranchsREG,  "       %s: %s:%s:lastInst_BranchREG=%s\n", funcName,inst->staticInst->disassemble(0), inst->id.execSeqNum, regs_str3.str());
+dyn_inst.cc:					DPRINTF(BranchsREG,  "		 	: %s:lastInst_BranchREG=%s\n", os.str(), regs_str3.str());
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s:Inst:%s\n", funcName, this->staticInst->disassemble(0));
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s\n", funcName);
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s:Inst:%s\n", funcName, this->staticInst->disassemble(0));
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s\n", funcName);
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s:Inst:%s\n", funcName, this->staticInst->disassemble(0));
+dyn_inst.cc:		//DPRINTF(RegFileAccess,  "In function %s\n", funcName);
+dyn_inst.cc:DPRINTF(CMPsREG,  "In function %s:Inst:%s:seqNUm:%s\n", funcName, this->staticInst->disassemble(0),this->id.execSeqNum);
+fetch2.cc:    DPRINTF(Fetch, "Dumping whole input buffer\n");
+fetch2.cc:        DPRINTF(Branch, "Unpredicted branch seen inst: %s\n", *inst);
+fetch2.cc:        DPRINTF(Branch, "Branch predicted correctly inst: %s\n", *inst);
+fetch2.cc:        DPRINTF(Branch, "Branch mis-predicted inst: %s\n", *inst);
+fetch2.cc:        DPRINTF(Branch, "Branch mis-predicted target inst: %s target: %s\n",
+fetch2.cc:        DPRINTF(Branch, "Trying to predict for inst: %s\n", *inst);
+fetch2.cc:        DPRINTF(Branch, "Not attempting prediction for inst: %s\n", *inst);
+fetch2.cc:        DPRINTF(Branch, "Branch predicted taken inst: %s target: %s"
+fetch2.cc:        DPRINTF(Fetch, "Dumping all input as a stream changing branch"
+fetch2.cc:            DPRINTF(Fetch, "Discarding line %s"
+fetch2.cc:                DPRINTF(Fetch, "Wrapping\n");
+fetch2.cc:                DPRINTF(Fetch, "Setting new PC value: %s inputIndex: 0x%x"
+fetch2.cc:                DPRINTF(Fetch, "Discarding line %s (from inputIndex: %d)"
+fetch2.cc:                DPRINTF(Fetch, "Fault being passed output_index: "
+fetch2.cc:                    DPRINTF(Fetch, "Offering MachInst to decoder"
+fetch2.cc:                    DPRINTF(Fetch, "Instruction extracted from line %s"
+fetch2.cc:                    DPRINTF(Fetch, "Inst not ready yet\n");
+fetch2.cc:                DPRINTF(Fetch, "Updated inputIndex value PC: %s"
+fetch2.cc:	DPRINTF(MainPCs, "Func: %s Inst: %s PC:%s\n", funcName, dyn_inst->staticInst->disassemble(0), dyn_inst->pc.instAddr());
+fetch2.cc:	DPRINTF(PCFaultInjectionTrack, "True Pc of Inst was PC:%s\n", pc.instAddr());
+fetch2.cc:	DPRINTF(PCFaultInjectionTrack, "True Pc of Inst is %s\n",pc.instAddr() );
+fetch2.cc:                DPRINTF(Fetch, "Discarding all input on branch/fault\n");
+fetch2.cc:                 *  stream sequence numbers.  There's a DPRINTF above
+fetch2.cc:                DPRINTF(Fetch, "Wrapping\n");
+pipe_data.hh:/** Print BranchData contents in a format suitable for DPRINTF comments, not
+execute.cc~:			DPRINTF(Branch, "tryToBranch before: %s after: %s%s\n",
+execute.cc~:					DPRINTF(MainPCs, "Func: %s Inst: %s PC:%s:----LastInt:%s\n", funcName, inst->staticInst->disassemble(0), inst->pc.instAddr(),lastInst->staticInst->disassemble(0));
+execute.cc~:					DPRINTF(PCFaultInjectionTrack, "FUNC:%s	Inst:%s: True Pc of Inst was PC:%s\n",funcName, inst->staticInst->disassemble(0), target.instAddr());
+execute.cc~:					DPRINTF(PCFaultInjectionTrack, "FUNC:%s Inst:%s: Faulty Pc of Inst is PC:%s\n",funcName, inst->staticInst->disassemble(0), target.instAddr() );
+execute.cc~:					DPRINTF(PCFaultInjectionTrack, "Funct: %s Following Inst:%s: PC:%s\n",funcName, inst->staticInst->disassemble(0),inst->pc.instAddr());
+execute.cc~:					DPRINTF(BranchsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for Branch fault injection is %s\n",funcName, inst->staticInst->disassemble(0));
+execute.cc~:					DPRINTF(CMPsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for CMP fault injection is %s\n",funcName, inst->staticInst->disassemble(0));
+execute.cc~:				DPRINTF(Branch, "Advancing current PC from: %s to: %s\n",
+execute.cc~:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x but"
+execute.cc~:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x correctly"
+execute.cc~:					DPRINTF(Branch, "Predicted a branch from 0x%x to 0x%x"
+execute.cc~:				DPRINTF(Branch, "Unpredicted branch from 0x%x to 0x%x inst: %s\n",
+execute.cc~:				DPRINTF(Branch, "Branch data signalled: %s\n", branch);
+execute.cc~:				DPRINTF(MinorMem, "Completing fault from DTLB access: %s\n",
+execute.cc~:					DPRINTF(MinorMem, "Not taking fault on prefetch: %s\n",
+execute.cc~:				DPRINTF(MinorMem, "Completing failed request inst: %s\n",
+execute.cc~:				DPRINTF(MinorMem, "Trying to commit error response: %s\n",
+execute.cc~:				DPRINTF(MinorMem, "Memory response inst: %s addr: 0x%x size: %d\n",
+execute.cc~:					DPRINTF(MinorMem, "Memory data[0]: 0x%x\n",
+execute.cc~:					DPRINTF(MinorMem, "Fault in memory completeAcc: %s\n",
+execute.cc~:			DPRINTF(MinorInterrupt, "Considering interrupt status from PC: %s\n",
+execute.cc~:				DPRINTF(MinorInterrupt, "Invoking interrupt: %s to PC: %s\n",
+execute.cc~:				DPRINTF(MinorExecute, "Initiating memRef inst: %s\n", *inst);
+execute.cc~:					DPRINTF(MinorExecute, "Fault on memory inst: %s"
+execute.cc~:					DPRINTF(MinorExecute, "Not issuing inst: %s from suspended"
+execute.cc~:					DPRINTF(MinorExecute, "Discarding inst: %s as its stream"
+execute.cc~:					DPRINTF(MinorExecute, "Not issuing new non-microop inst: %s\n",
+execute.cc~:						DPRINTF(MinorExecute, "Trying to issue inst: %s to FU: %d\n",
+execute.cc~:								DPRINTF(MinorExecute, "Can't issue as FU: %d isn't"
+execute.cc~:								DPRINTF(MinorExecute, "Can't issue as FU: %d is"
+execute.cc~:							DPRINTF(MinorExecute, "Can't issue inst: %s into FU: %d,"
+execute.cc~:							DPRINTF(MinorExecute, "Can't issue inst: %s to busy FU"
+execute.cc~:								DPRINTF(MinorExecute, "Can't issue inst: %s as extra"
+execute.cc~:								DPRINTF(MinorExecute, "Can't issue inst: %s yet\n",
+execute.cc~:								DPRINTF(MinorExecute, "Issuing inst: %s"
+execute.cc~:											DPRINTF(MinorExecute, "A barrier will"
+execute.cc~:											DPRINTF(MinorExecute, "Memory ref inst:"
+execute.cc~:									DPRINTF(MinorExecute, "Pushing mem inst: %s\n",
+execute.cc~:						DPRINTF(MinorExecute, "Didn't issue inst: %s\n", *inst);
+execute.cc~:						DPRINTF(MinorMem, "Issuing memory barrier inst: %s\n", *inst);
+execute.cc~:							DPRINTF(MinorExecute, "Reached inst issue limit\n");
+execute.cc~:					DPRINTF(MinorExecute, "Stepping to next inst inputIndex: %d\n",
+execute.cc~:						DPRINTF(MinorExecute, "Wrapping\n");
+execute.cc~:				DPRINTF(PCEvent, "Acting on PC Event to PC: %s\n",
+execute.cc~:DPRINTF(faultInjectionTrack, "%s \n",inst->staticInst->disassemble(0));
+execute.cc~:					DPRINTF(UnnecInst, "%s\n", inst->staticInst->disassemble(0));
+execute.cc~:				DPRINTF(MinorExecute, "Not committing inst from suspended thread"
+execute.cc~:				DPRINTF(MinorExecute, "Fault inst reached Execute: %s\n",
+execute.cc~:						DPRINTF(MinorExecute, "Fault in early executing inst: %s\n",
+execute.cc~:						DPRINTF(MinorExecute, "Fault in execute: %s\n",
+execute.cc~:				DPRINTF(MinorExecute, "Can't commit data barrier inst: %s yet as"
+execute.cc~:				DPRINTF(MinorExecute, "Committing inst: %s\n", *inst);
+execute.cc~:					DPRINTF(MinorExecute, "Fault in execute of inst: %s fault: %s\n",
+execute.cc~:					DPRINTF(MinorInterrupt, "Suspending thread: %d from Execute"
+execute.cc~:				DPRINTF(MinorInterrupt, "Only commit microops %s %d\n",
+execute.cc~:					DPRINTF(MinorInterrupt, "Committing tail of insts before"
+execute.cc~:					DPRINTF(RegPointerFI, "FUNC= %s\nTarget instruction for pipeline registers fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc~:					DPRINTF(FUsREGfaultInjectionTrack, "From execute.cc---FUNC= %s\nTarget instruction for FUs fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc~:					DPRINTF(BranchsREGfaultInjectionTrack, "FUNC= %s\nTarget instruction for Branch fault injection is %s\n",funcName, head_inflight_inst->inst->staticInst->disassemble(0));
+execute.cc~:				DPRINTF(MinorExecute, "Trying to commit canCommitInsts: %d\n",
+execute.cc~:					DPRINTF(MinorExecute, "Trying to commit mem response: %s\n",
+execute.cc~:						DPRINTF(MinorExecute, "Discarding mem inst: %s as its"
+execute.cc~:						DPRINTF(MinorExecute, "Trying to commit from mem FUs\n");
+execute.cc~:							DPRINTF(MinorExecute, "Issuing mem ref early"
+execute.cc~:						DPRINTF(MinorExecute, "Committing no cost inst: %s", *inst);
+execute.cc~:						DPRINTF(MinorExecute, "Trying to commit from FUs\n");
+execute.cc~:								DPRINTF(MinorExecute, "Evaluating expression for"
+execute.cc~:								DPRINTF(MinorExecute, "Extra commit delay expr"
+execute.cc~:									DPRINTF(MinorExecute, "Extra commit delay was"
+execute.cc~:								DPRINTF(MinorExecute, "Not committing inst: %s yet"
+execute.cc~:								DPRINTF(MinorExecute, "Not committing inst: %s yet"
+execute.cc~:					DPRINTF(MinorExecute, "No instructions to commit\n");
+execute.cc~:					DPRINTF(MinorExecute, "Discarding inst: %s as its stream"
+execute.cc~:					DPRINTF(MinorExecute, "Completed inst: %s\n", *inst);
+execute.cc~:						DPRINTF(MinorMem, "Completing memory barrier"
+execute.cc~:						DPRINTF(MinorExecute, "Reached inst commit limit\n");
+execute.cc~:						DPRINTF(MinorExecute, "Reached mem ref commit limit\n");
+execute.cc~:				DPRINTF(MinorInterrupt, "No interrupt controller\n");
+execute.cc~:				DPRINTF(MinorInterrupt, "Execute skipping a cycle to allow old"
+execute.cc~:						DPRINTF(MinorInterrupt, "Waiting but no insts\n");
+execute.cc~:						DPRINTF(MinorInterrupt, "Waiting for end of inst before"
+execute.cc~:			DPRINTF(Activity, "Need to tick num issued insts: %s%s%s%s%s%s\n",
+execute.cc~:				DPRINTF(Activity, "The next cycle might be skippable as there are no"
+execute.cc~:				DPRINTF(faultInjectionTrack, "Some this is wrong! Execution takes too long");
+execute.cc~:					DPRINTF(printCF, "%d -> %s \n",counter, funcName);
+execute.cc~:				DPRINTF(TickMain, "FunctionaName:=%s\n",sym_str );
+execute.cc~:					DPRINTF(faultInjectionTrack, "random selected reg(relative): %s\n.", FItargetReg);
+execute.cc~:					//DPRINTF(faultInjectionTrack, "random selected reg(after flatten): %s\n.", reg);
+execute.cc~:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the integer register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readIntReg(FItargetReg));
+execute.cc~:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the float register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readFloatRegBits(FItargetReg));
+execute.cc~:							DPRINTF(faultInjectionTrack, "In Function: %s fault is injected on the CC register %s, true value was %s and the fliped bit is %s, so the faulty value is %s\n", funcName, FItargetReg, trueValue, randBit,cpu.threads[0]->readIntReg(FItargetReg));
+execute.cc~:				DPRINTF(MinorInterrupt, "Waking up Fetch (via Execute) by issuing"
+execute.cc~:				DPRINTF(MinorInterrupt, "Already branching, no need for wakeup\n");
+execute.cc~:			DPRINTF(Drain, "MinorExecute drainResume\n");
+execute.cc~:			DPRINTF(Drain, "setDrainState: %s\n", state);
+execute.cc~:			DPRINTF(Drain, "MinorExecute drain\n");
+trace.hh:/** DPRINTFN for MinorTrace reporting */
+trace.hh:    DPRINTF(MinorTrace, "MinorTrace: " __VA_ARGS__)
+trace.hh:/** DPRINTFN for MinorTrace MinorInst line reporting */
+trace.hh:    DPRINTFS(MinorTrace, (sim_object), "MinorInst: " __VA_ARGS__)
+trace.hh:/** DPRINTFN for MinorTrace MinorLine line reporting */
+trace.hh:    DPRINTFS(MinorTrace, (sim_object), "MinorLine: " __VA_ARGS__)
+func_unit.cc:            DPRINTFS(MinorTiming, static_cast<Named *>(this),
+func_unit.cc:            DPRINTFS(MinorTiming, static_cast<Named *>(this),
+func_unit.cc:        DPRINTFS(MinorTiming, static_cast<Named *>(this),
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Setting state from %d to %d for request:"
+lsq.cc:    DPRINTF(MinorMem, "Moving %s barrier out of store buffer inst: %s\n",
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Received translation response for"
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Submitting DTLB request\n");
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Retiring packet\n");
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Received translation response for fragment"
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Faulting translation for fragment:"
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Dividing transfer into %d fragmentRequests."
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Generating fragment addr: 0x%x size: %d"
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Making packets for request: %s\n", *inst);
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Making packet %d for request: %s"
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Retiring fragment addr: 0x%x size: %d"
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Skipping this fragment\n");
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Fragment has an error, skipping\n");
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Completed skipped burst\n");
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Completed burst %d\n", packet != NULL);
+lsq.cc:        DPRINTFS(MinorMem, (&port), "Retired packet isRead: %d isWrite: %d"
+lsq.cc:            DPRINTFS(MinorMem, (&port), "Copying read data\n");
+lsq.cc:    DPRINTFS(MinorMem, (&port), "Submitting DTLB request for fragment: %d\n",
+lsq.cc:        DPRINTF(MinorMem, "Deleting request: %s %s %s from StoreBuffer\n",
+lsq.cc:    DPRINTF(MinorMem, "Pushing store: %s into store buffer\n", request);
+lsq.cc:                DPRINTF(MinorMem, "Forwarding: slot: %d result: %s thisAddr:"
+lsq.cc:    DPRINTF(MinorMem, "Forwarding %d bytes for addr: 0x%x from store buffer"
+lsq.cc:    DPRINTF(MinorMem, "StoreBuffer step numUnissuedAccesses: %d\n",
+lsq.cc:            DPRINTF(MinorMem, "Clearing barrier for inst: %s\n",
+lsq.cc:            DPRINTF(MinorMem, "Considering request: %s, sentAllPackets: %d"
+lsq.cc:                DPRINTF(MinorMem, "Trying to send request: %s to memory"
+lsq.cc:        DPRINTF(MinorMem, "Request needs retry, not issuing to"
+lsq.cc:        DPRINTF(MinorMem, "Request still in translation, not issuing to"
+lsq.cc:        DPRINTF(MinorMem, "Request not at front of requests queue, can't"
+lsq.cc:        DPRINTF(MinorMem, "No space to insert request into transfers"
+lsq.cc:        DPRINTF(MinorMem, "Passing a %s transfer on to transfers"
+lsq.cc:            DPRINTF(MinorMem, "Request's inst. is from the wrong stream,"
+lsq.cc:            DPRINTF(MinorMem, "Request's inst. is from the wrong stream,"
+lsq.cc:            DPRINTF(MinorMem, "Not signalling fault for faulting prefetch\n");
+lsq.cc:        DPRINTF(MinorMem, "Moving faulting request into the transfers"
+lsq.cc:            DPRINTF(MinorMem, "Load request with stores still in transfers"
+lsq.cc:            DPRINTF(MinorMem, "Moving store into transfers queue\n");
+lsq.cc:            DPRINTF(MinorMem, "Memory access not the head inst., can't be"
+lsq.cc:            DPRINTF(MinorMem, "Memory access can receive forwarded data"
+lsq.cc:                DPRINTF(MinorMem, "Load partly satisfied by store buffer"
+lsq.cc:                DPRINTF(MinorMem, "No forwardable data from store buffer\n");
+lsq.cc:            DPRINTF(MinorMem, "Can't send request to memory system yet\n");
+lsq.cc:                DPRINTF(MinorMem, "Not perfoming a memory "
+lsq.cc:            DPRINTF(MinorMem, "Can't send request to memory system yet\n");
+lsq.cc:        DPRINTF(MinorMem, "Can't send request: %s yet, no space in memory\n",
+lsq.cc:        DPRINTF(MinorMem, "Trying to send request: %s addr: 0x%x\n",
+lsq.cc:                DPRINTF(MinorMem, "IPR read inst: %s\n", *(request->inst));
+lsq.cc:                DPRINTF(MinorMem, "IPR write inst: %s\n", *(request->inst));
+lsq.cc:                DPRINTF(MinorMem, "IPR access has another packet: %s\n",
+lsq.cc:            DPRINTF(MinorMem, "Sent data memory request\n");
+lsq.cc:            DPRINTF(MinorMem,
+lsq.cc:    DPRINTF(MinorMem, "Received response packet inst: %s"
+lsq.cc:        DPRINTF(MinorMem, "Received error response packet: %s\n",
+lsq.cc:        DPRINTF(MinorMem, "Has outstanding packets?: %d %d\n",
+lsq.cc:                DPRINTF(MinorMem, "Completed transfer for barrier: %s"
+lsq.cc:    DPRINTF(MinorMem, "Received retry request\n");
+lsq.cc:        DPRINTF(MinorMem, "Found matching memory response for inst: %s\n",
+lsq.cc:        DPRINTF(MinorMem, "No matching memory response for inst: %s\n",
+lsq.cc:        DPRINTF(MinorMem, "Deleting %s request: %s\n",
+lsq.cc:    DPRINTF(MinorMem, "Sending store: %s to store buffer\n",
+lsq.cc:        DPRINTF(Activity, "Need to tick\n");
+lsq.cc:    DPRINTF(MinorMem, "Pushing request (%s) addr: 0x%x size: %d flags:"
+lsq.cc:DPRINTF(LSQaccesses, "FUNC= %s: Inst:%s: SeqNum:%s\n",funcName,inst->staticInst->disassemble(0),inst->id.execSeqNum);
+lsq.cc:DPRINTF(LSQtrack, "Func:%s, Target instruction in LSQ is:%s, faulty size is %s\n",funcName, inst->staticInst->disassemble(0), size );
+lsq.cc:DPRINTF(LSQtrack, "Func:%s, Target instruction in LSQ is:%s, true address is 0x%s and faulty address is 0x%s\n",funcName, inst->staticInst->disassemble(0), addr, (addr xor  temp) );
+lsq.cc:DPRINTF(LSQtrack, "Func:%s, Target instruction is Store:%s, soft error happens on data\n",funcName, inst->staticInst->disassemble(0));
